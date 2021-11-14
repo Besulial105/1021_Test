@@ -397,24 +397,24 @@
       <p class="lead">Welche Spirituosen hast Du an Lager?</p>
         <form>
           <div class="mb-3">
-              <input class="Vodka" type="checkbox" value="" id="flexCheckDefault">
-              <label class="Vodka" for="flexCheckDefault">
+              <input class="Vodka" type="checkbox" value="" id="InVodka">
+              <label class="Vodka" for="InVodka">
                 Vodka
               </label>
               
-              <input class="Gin" type="checkbox" value="" id="flexCheckChecked">
-              <label class="Gin" for="flexCheckDefault">
+              <input class="Gin" type="checkbox" value="" id="InGin">
+              <label class="Gin" for="InGin">
                 Gin
               </label>
              
               <p class="lead">und welche Säfte?</p>
-              <input class="OSaft" type="checkbox" value="" id="flexCheckDefault">
-              <label class="OSaft" for="flexCheckDefault">
+              <input class="OSaft" type="checkbox" value="" id="InOSaft">
+              <label class="OSaft" for="InOSaft">
               Orangensaft
               </label>
               
-              <input class="TSaft" type="checkbox" value="" id="flexCheckChecked">
-              <label class="TSaft" for="flexCheckDefault">
+              <input class="TSaft" type="checkbox" value="" id="InTSaft">
+              <label class="TSaft" for="InTSaft">
               Tomatensaft
               </label>
           </div>
@@ -426,6 +426,40 @@
 
       <!-- 13.11.21 Einbau Hide and Show Button -->
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="myFunction()">Absenden</button>
+
+      <!-- 13.11.21 Inhalt der Checkboxes in ein JS Object -->
+
+      <script>
+        let checkboxes = [];
+        // example {vodka, Gin}
+        const addChkbox = (ev)=>{
+            ev.preventDefault();  //to stop the form submitting
+            let chkbox = {
+                id: Date.now(),
+                Vodka: document.getElementById('InVodka').value,
+                Gin: document.getElementById('InGin').value,
+                OSaft: document.getElementById('InOSaft').value,
+                TSaft: document.getElementById('INTSaft').value,
+              }
+            checkboxes.push(chkbox);
+            document.forms[0].reset(); // to clear the form for the next entries
+            //document.querySelector('form').reset();
+
+            //for display purposes only
+            console.warn('added' , {checkboxes} );
+            let pre = document.querySelector('#msg pre');
+            pre.textContent = '\n' + JSON.stringify(checkboxes, '\t', 2);
+
+            //saving to localStorage
+            localStorage.setItem('Checkboxen', JSON.stringify(checkboxes) );
+        }
+        document.addEventListener('DOMContentLoaded', ()=>{
+            document.getElementById('button').addEventListener('click', addChkbox);
+        });
+    </script>
+
+
+      <!-- 13.11.21 Einbau Hide and Show Button -->
         <script>
           function myFunction() {
             var x = document.getElementById("myDIV");
