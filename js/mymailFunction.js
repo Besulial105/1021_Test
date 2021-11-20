@@ -2,9 +2,6 @@ const btn = document.getElementById('btn2')
 const inputs = document.querySelector('form')
 btn.addEventListener('click', () => {
   Email.send({
-    //Host: "smtp.mailtrap.io",
-    //Username: "b1d1f07194fb89",
-    //Password: "e627e01a9be20d",
     SecureToken: "8a407fea-78c2-4af5-859e-86a210b38221",
     To: "info@theschmidfamily.ch",
     From: inputs.elements["email"].value,
