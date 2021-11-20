@@ -13,6 +13,10 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 
+ <!-- Javascripts -->
+  <script src="js/myhideFunction.js"></script>
+  <script src="js/myshowFunction.js"></script>
+
   <title>Frontend</title>
 </head>
 
@@ -63,17 +67,17 @@
     </div>
   </section>
 
-  <!-- 14.11. 21 Test Array anzeigen-->
-  <!-- <h2>JavaScript Arrays</h2>;-->
-  <!--<p id="demo"></p>;>-->
+
 
   <!--Boxes-->
-  <!--Anfang Einbau 13.11.21 Hide and Show Boxes-->
+  <!--Anfang Einbau 13.11.21 Hide Section-->
 
- <div id="Vodka-Box">
+  <div id="Vodka-Box">
   <body onload="myhideFunction()">
 
-  <!--Ende Einbau 13.11.21 Hide and Show Boxes-->  
+  <!--Ende Einbau 13.11.21 Hide section--> 
+  
+  <!--Box Vodka -->
     <section class="p-5">    
     <div class="container">
       <div class="row text-center g-4">
@@ -97,11 +101,14 @@
       </section>
   </div>  
 
-    <!--Anfang Einbau 13.11.21 Hide and Show Boxes-->
+    <!--Anfang Einbau 13.11.21 Hide Section-->
 
  <div id="Gin-Box">
   <body onload="myhideFunction()">
 
+   <!--Ende Einbau 13.11.21 Hide section-->  
+
+    <!--Box Gin -->
     <section class="p-5">
      <div class="container">
       <div class="row text-center g-4">
@@ -123,11 +130,14 @@
           </div>
         </div>
       </section>
- </div>    
- 
+ </div> 
+
+  <!--Anfang Einbau 13.11.21 Hide Section-->
   <div id="Default-Box">
   <body onload="myhideFunction()">
+ <!--Ende Einbau 13.11.21 Hide section-->  
 
+ <!--Box Default -->
     <section class="p-5">
       <div class="container">
        <div class="row text-center g-4">
@@ -151,6 +161,23 @@
     </div> 
   </section>
 </div> 
+
+
+  <!--Newsletter-->
+  <section class="bg-primary text-light p-5">
+    <div class="container">
+      <div class="d-md-flex justify-content-between align-items-center">
+        <h3 class="mb-3 mb-mb-0">Newsletter Anmeldung</h3>
+
+        <div class="input-group news-input">
+          <input type="text" class="form-control" placeholder="Email-Adresse">
+          <button class="btn btn-dark btn-lg" type="button">Button</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+   
 
   <!--Learn Sections -->
 
@@ -206,23 +233,8 @@
     </div>
   </section>
  
-  <!--Newsletter-->
-  <section class="bg-primary text-light p-5">
-    <div class="container">
-      <div class="d-md-flex justify-content-between align-items-center">
-        <h3 class="mb-3 mb-mb-0">Newsletter Anmeldung</h3>
 
-        <div class="input-group news-input">
-          <input type="text" class="form-control" placeholder="Email-Adresse">
-          <button class="btn btn-dark btn-lg" type="button">Button</button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-   
   <!--Fragen-->
-  
   <section id="questions" class="p-5 mt-3">
     <div class="container">
       <h2 class="text-center mb-4">Häufig gestellte Fragen</h2>
@@ -456,121 +468,6 @@
       <!-- 13.11.21 Einbau Hide and Show Button -->
       <button type="button" class="btn btn-primary" id="btn" data-bs-dismiss="modal" onclick="myshowFunction()">Absenden</button>
 
-      <!-- 14.11.21 Einbau Hide and Show Button -->
-        <script>
-          function myhideFunction() {
-            var sectionVodka = document.getElementById("Vodka-Box");
-            var sectionGin = document.getElementById("Gin-Box");
-            var sectionDefault = document.getElementById("Default-Box");
-           
-            sectionVodka.style.display = "none";
-            sectionGin.style.display = "none";
-            sectionDefault.style.display = "none";
-          }
-          </script>
-
-      <!-- 20.11.21 Einbau Section anzeigen pro Checkbox -->
-       <script>
-                function myshowFunction() {
-                  var checkBoxVodka = document.getElementById("InVodka");
-                  var checkBoxGin = document.getElementById("InGin");
-                  var checkBoxOSaft = document.getElementById("InOSaft");
-                  var checkBoxTSaft = document.getElementById("InTSaft");
-
-                  var sectionVodka = document.getElementById("Vodka-Box");
-                  var sectionGin = document.getElementById("Gin-Box");
-                  var sectionDefault = document.getElementById("Default-Box");
-
-                  // initialisieren - Boxen der letzten Auswahl ausblenden
-                  sectionDefault.style.display = "none";
-                  sectionVodka.style.display = "none";
-                  sectionGin.style.display = "none";
-
-                  // Vodka ist "checked"
-                  if (checkBoxVodka.checked == true){
-                    sectionVodka.style.display = "block";
-                  } else {
-                     
-                  }
-                  
-                  // Gin ist "checked"
-                  if (checkBoxGin.checked == true){
-                    sectionGin.style.display = "block";
-                  } else {
-                     sectionGin.style.display = "none";
-                  }
-                  
-                  // OSaft ist "checked"
-                  if (checkBoxOSaft.checked == true){
-                    sectionDefault.style.display = "block";
-                  } else {
-                     
-                  }
-                        
-                  // TSaft ist "checked"
-                  if (checkBoxTSaft.checked == true){
-                    sectionDefault.style.display = "block";
-                  } else {
-                     
-                  }
-                 
-                  // Vodka, OSaft, TSaft ist  "checked"
-                  if (((checkBoxVodka.checked == true)&& (checkBoxOSaft.checked == true)&& (checkBoxTSaft.checked == true))) {
-                   sectionVodka.style.display = "block";
-                   sectionDefault.style.display = "none";
-                  } else {
-                     
-                  }
-               
-                  // Vodka, OSaft ist  "checked"
-                  if ((checkBoxVodka.checked == true)&& (checkBoxOSaft.checked == true)) {
-                   sectionVodka.style.display = "block";
-                   sectionDefault.style.display = "none";
-                  } else {
-                     
-                  }
-
-                  // Vodka, TSaft ist  "checked"
-                  if ((checkBoxVodka.checked == true)&& (checkBoxTSaft.checked == true)) {
-                   sectionVodka.style.display = "block";
-                   sectionDefault.style.display = "none";
-                  } else {
-                     
-                  }
-
-                  // Gin, OSaft, TSaft ist  "checked"
-                  if (((checkBoxGin.checked == true)&& (checkBoxOSaft.checked == true)&& (checkBoxTSaft.checked == true))) {
-                   sectionGin.style.display = "block";
-                   sectionDefault.style.display = "none";
-                  } else {
-                     
-                  }
-
-                  // Gin, OSaft ist  "checked"
-                  if ((checkBoxGin.checked == true)&& (checkBoxOSaft.checked == true)) {
-                   sectionGin.style.display = "block";
-                   sectionDefault.style.display = "none";
-                  } else {
-                     
-                  }
-
-                  // Gin, TSaft ist  "checked"
-                  if ((checkBoxGin.checked == true)&& (checkBoxTSaft.checked == true)) {
-                   sectionGin.style.display = "block";
-                   sectionDefault.style.display = "none";
-                  } else {
-                     
-                  }
-
-                  // Keine Auswahl getroffen - kein  "checked"
-                  if ((((checkBoxVodka.checked == false)&& (checkBoxGin.checked == false)&& (checkBoxOSaft.checked == false)&& (checkBoxTSaft.checked == false)))) {
-                   sectionDefault.style.display = "block";
-                  } else {
-                     
-                  }
-
-                }
-                </script>
 
       </div>
     </div>
