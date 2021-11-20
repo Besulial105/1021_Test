@@ -63,15 +63,18 @@
     </div>
   </section>
 
+  <!-- 14.11. 21 Test Array anzeigen-->
+  <!-- <h2>JavaScript Arrays</h2>;-->
+  <!--<p id="demo"></p>;>-->
+
   <!--Boxes-->
   <!--Anfang Einbau 13.11.21 Hide and Show Boxes-->
 
- <div id="myDIV">
-  <body onload="myFunction()">
+ <div id="Vodka-Box">
+  <body onload="myhideFunction()">
 
   <!--Ende Einbau 13.11.21 Hide and Show Boxes-->  
-
-    <section class="p-5">
+    <section class="p-5">    
     <div class="container">
       <div class="row text-center g-4">
         <div class="col-md">
@@ -87,11 +90,22 @@
               <p class="card-text">
                 Hier geht es zu den Details
               </p>
-              <a href="pages/rezept_vodka.html" class="btn btn-primary">mehr lesen</a>
+              <a href="pages/rezept_gin.html" class="btn btn-primary">mehr lesen</a>
             </div>
           </div>
         </div>
-        <div class="col-md">
+      </section>
+  </div>  
+
+    <!--Anfang Einbau 13.11.21 Hide and Show Boxes-->
+
+ <div id="Gin-Box">
+  <body onload="myhideFunction()">
+
+    <section class="p-5">
+     <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-md" >
           <div class="card bg-secondary text-light">
             <div class="card-body text-center">
               <div class="h1 mb-3">
@@ -104,11 +118,20 @@
               <p class="card-text">
                 Zwei super feine Gin Rezepte
               </p>
-              <a href="pages/rezept_gin.html" class="btn btn-dark">mehr lesen</a>
+              <a href="pages/rezept_vodka.html" class="btn btn-dark">mehr lesen</a>
             </div>
           </div>
         </div>
-        <div class="col-md">
+      </section>
+ </div>    
+ 
+  <div id="Default-Box">
+  <body onload="myhideFunction()">
+
+    <section class="p-5">
+      <div class="container">
+       <div class="row text-center g-4">
+        <div class="col-md" >
           <div class="card bg-dark text-light">
             <div class="card-body text-center">
               <div class="h1 mb-3">
@@ -125,9 +148,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   </section>
-</div>
+</div> 
 
   <!--Learn Sections -->
 
@@ -376,6 +399,8 @@
       </div>
   </section>
 
+
+
 <footer class="p-5 bg-dark text-white text-center position-relative">
   <div class="container">
     <p class="lead">Copyright &copy; 2021 Frontend Papi</p>
@@ -417,6 +442,8 @@
               <label class="TSaft" for="InTSaft">
               Tomatensaft
               </label>
+
+
           </div>
         </form>
 
@@ -424,53 +451,126 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-      <!-- 13.11.21 Einbau Hide and Show Button -->
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="myFunction()">Absenden</button>
-
-      <!-- 13.11.21 Inhalt der Checkboxes in ein JS Object -->
-
-      <script>
-        let checkboxes = [];
-        // example {vodka, Gin}
-        const addChkbox = (ev)=>{
-            ev.preventDefault();  //to stop the form submitting
-            let chkbox = {
-                id: Date.now(),
-                Vodka: document.getElementById('InVodka').value,
-                Gin: document.getElementById('InGin').value,
-                OSaft: document.getElementById('InOSaft').value,
-                TSaft: document.getElementById('INTSaft').value,
-              }
-            checkboxes.push(chkbox);
-            document.forms[0].reset(); // to clear the form for the next entries
-            //document.querySelector('form').reset();
-
-            //for display purposes only
-            console.warn('added' , {checkboxes} );
-            let pre = document.querySelector('#msg pre');
-            pre.textContent = '\n' + JSON.stringify(checkboxes, '\t', 2);
-
-            //saving to localStorage
-            localStorage.setItem('Checkboxen', JSON.stringify(checkboxes) );
-        }
-        document.addEventListener('DOMContentLoaded', ()=>{
-            document.getElementById('button').addEventListener('click', addChkbox);
-        });
     </script>
 
-
       <!-- 13.11.21 Einbau Hide and Show Button -->
+      <button type="button" class="btn btn-primary" id="btn" data-bs-dismiss="modal" onclick="myshowFunction()">Absenden</button>
+
+      <!-- 14.11.21 Einbau Hide and Show Button -->
         <script>
-          function myFunction() {
-            var x = document.getElementById("myDIV");
-            if (x.style.display === "none") {
-              x.style.display = "block";
-            } else {
-              x.style.display = "none";
-            }
-            
+          function myhideFunction() {
+            var sectionVodka = document.getElementById("Vodka-Box");
+            var sectionGin = document.getElementById("Gin-Box");
+            var sectionDefault = document.getElementById("Default-Box");
+           
+            sectionVodka.style.display = "none";
+            sectionGin.style.display = "none";
+            sectionDefault.style.display = "none";
           }
           </script>
+
+      <!-- 20.11.21 Einbau Section anzeigen pro Checkbox -->
+       <script>
+                function myshowFunction() {
+                  var checkBoxVodka = document.getElementById("InVodka");
+                  var checkBoxGin = document.getElementById("InGin");
+                  var checkBoxOSaft = document.getElementById("InOSaft");
+                  var checkBoxTSaft = document.getElementById("InTSaft");
+
+                  var sectionVodka = document.getElementById("Vodka-Box");
+                  var sectionGin = document.getElementById("Gin-Box");
+                  var sectionDefault = document.getElementById("Default-Box");
+
+                  // initialisieren - Boxen der letzten Auswahl ausblenden
+                  sectionDefault.style.display = "none";
+                  sectionVodka.style.display = "none";
+                  sectionGin.style.display = "none";
+
+                  // Vodka ist "checked"
+                  if (checkBoxVodka.checked == true){
+                    sectionVodka.style.display = "block";
+                  } else {
+                     
+                  }
+                  
+                  // Gin ist "checked"
+                  if (checkBoxGin.checked == true){
+                    sectionGin.style.display = "block";
+                  } else {
+                     sectionGin.style.display = "none";
+                  }
+                  
+                  // OSaft ist "checked"
+                  if (checkBoxOSaft.checked == true){
+                    sectionDefault.style.display = "block";
+                  } else {
+                     
+                  }
+                        
+                  // TSaft ist "checked"
+                  if (checkBoxTSaft.checked == true){
+                    sectionDefault.style.display = "block";
+                  } else {
+                     
+                  }
+                 
+                  // Vodka, OSaft, TSaft ist  "checked"
+                  if (((checkBoxVodka.checked == true)&& (checkBoxOSaft.checked == true)&& (checkBoxTSaft.checked == true))) {
+                   sectionVodka.style.display = "block";
+                   sectionDefault.style.display = "none";
+                  } else {
+                     
+                  }
+               
+                  // Vodka, OSaft ist  "checked"
+                  if ((checkBoxVodka.checked == true)&& (checkBoxOSaft.checked == true)) {
+                   sectionVodka.style.display = "block";
+                   sectionDefault.style.display = "none";
+                  } else {
+                     
+                  }
+
+                  // Vodka, TSaft ist  "checked"
+                  if ((checkBoxVodka.checked == true)&& (checkBoxTSaft.checked == true)) {
+                   sectionVodka.style.display = "block";
+                   sectionDefault.style.display = "none";
+                  } else {
+                     
+                  }
+
+                  // Gin, OSaft, TSaft ist  "checked"
+                  if (((checkBoxGin.checked == true)&& (checkBoxOSaft.checked == true)&& (checkBoxTSaft.checked == true))) {
+                   sectionGin.style.display = "block";
+                   sectionDefault.style.display = "none";
+                  } else {
+                     
+                  }
+
+                  // Gin, OSaft ist  "checked"
+                  if ((checkBoxGin.checked == true)&& (checkBoxOSaft.checked == true)) {
+                   sectionGin.style.display = "block";
+                   sectionDefault.style.display = "none";
+                  } else {
+                     
+                  }
+
+                  // Gin, TSaft ist  "checked"
+                  if ((checkBoxGin.checked == true)&& (checkBoxTSaft.checked == true)) {
+                   sectionGin.style.display = "block";
+                   sectionDefault.style.display = "none";
+                  } else {
+                     
+                  }
+
+                  // Keine Auswahl getroffen - kein  "checked"
+                  if ((((checkBoxVodka.checked == false)&& (checkBoxGin.checked == false)&& (checkBoxOSaft.checked == false)&& (checkBoxTSaft.checked == false)))) {
+                   sectionDefault.style.display = "block";
+                  } else {
+                     
+                  }
+
+                }
+                </script>
 
       </div>
     </div>
