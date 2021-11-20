@@ -17,6 +17,7 @@
   <script src="js/myhideFunction.js"></script>
   <script src="js/myshowFunction.js"></script>
 
+  
   <title>Frontend</title>
 </head>
 
@@ -164,22 +165,25 @@
       </section>
   </div>
 
-
-  <!--Newsletter-->
+  <!--Newsletter neu-->
   <section class="bg-primary text-light p-5">
-    <div class="container">
-      <div class="d-md-flex justify-content-between align-items-center">
-        <h3 class="mb-3 mb-mb-0">Newsletter Anmeldung</h3>
-
-        <div class="input-group news-input">
-          <input type="text" class="form-control" placeholder="Email-Adresse">
-          <button class="btn btn-dark btn-lg" type="button">Button</button>
-        </div>
-
+  <div class="container">
+    <form>
+      <div class="form-item">
+        <div class="d-md-flex justify-content-between align-items-center">
+          <h3 class="mb-3 mb-mb-0">Newsletter Anmeldung</h3>
       </div>
-    </div>
-  </section>
+      <div class="input-group news-input">
+        <input type="text" class="form-control" name="email" placeholder="Email-Adresse">
+        <button class="btn btn-dark btn-lg" type="button" id=btn2 >Senden</button>
+      </div>
+   </form>
+  </div>
+</section>
 
+<!-- Newsletter senden-->
+<script src="js/mymailFunction.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 
   <!--Learn Sections -->
 
@@ -467,7 +471,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="button">Close</button>
 
           </script>
 
@@ -496,6 +500,7 @@
       zoom: 14
     });
   </script>
+
 
 </body>
 
